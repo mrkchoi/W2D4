@@ -22,6 +22,12 @@ def first_anagram?(str1, str2)
   perms.include?(str2)
 end
 
+# Time complexity: O(n*n!)
+# Space complexity: O(n!)
+
+
+
+
 
 # def permutations(arr) 
 #   return [[]] if arr.empty?
