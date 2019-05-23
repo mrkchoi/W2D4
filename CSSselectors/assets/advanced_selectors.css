@@ -50,10 +50,31 @@ input[type = "submit"] {
   outline: none; 
 }
 
-form:last-child {
+form input:last-child {
   background-color: gold;
 
 }
 
+ol li:nth-child(2n) { 
+  background-color: lightgray;
+}
 
+section#reviews h2 + div {
+  border-top: 1px solid black;
+}
 
+input[type="radio"] {
+  background-image: url('./stars.png');
+  width: 25px;
+  height: 25px;
+  -webkit-appearance: none;
+  background-position: 0rem 0rem;
+}
+
+input[type="radio"]:hover {
+  background-position: 0 -1.9rem;
+}
+
+input[type="radio"]:checked {
+  background-position: 0 -3.8rem;
+}
