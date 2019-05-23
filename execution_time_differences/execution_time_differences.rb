@@ -40,7 +40,14 @@ end
 # Now rewrite the function to iterate through the list just once while keeping track of the minimum. What is the time complexity?
 
 def my_min_2(arr)
+  min = arr.shift
+
+  (0...arr.length).each do |i|
+    min = arr[i] if min > arr[i]
+  end
   
+  min
 end
 
-# list = [ 0, 3, 5, 4, -5, 10, 1, 90 ]
+list = [ 0, 3, 5, 4, -5, 10, 1, 90 ]
+p my_min_2(list)  # =>  -5
