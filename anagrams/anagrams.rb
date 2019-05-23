@@ -14,11 +14,49 @@
 # Write a method #first_anagram? that will generate and store all the possible anagrams of the first string. Check if the second string is one of these.
 
 def first_anagram?(str1, str2)
+  arr1 = str1.chars
+  perms = permutations(arr1).map do |perm| # => 'ab' => [[a,b],[b,a]] => ['ab', 'ba']
+    perm.join('')
+  end
 
+  perms.include?(str2)
 end
 
-# p first_anagram?("gizmo", "sally")    #=> false
-# p first_anagram?("elvis", "lives")    #=> true
+
+def permutations(arr) 
+  return [[]] if arr.empty?
+
+  last = arr.last
+  perms = permutations(arr[0..-2])
+  output = []
+
+  perms.each do |perm|
+    cur_perms = []
+
+    (0..perm.length).each do |i|
+      cur_perm = perm.dup
+      cur_perms << cur_perm.insert(i, last)
+    end  
+
+    output += cur_perms
+  end
+
+  output
+end
+
+# p permutations([]) # => [] => [[]]
+# p permutations(['a']) # => [a] => [[a]]
+# p permutations(['a', 'b']) # => [a,b] => [[a,b], [b,a]]
+# p permutations(['a', 'b', 'c']) # => [a,b] => [[a,b], [b,a]]
+
+# => [] => [[]]
+# => [a] => [[a]]
+# => [a,b] => [[a,b], [b,a]]
+# => [a,b,c] => [[a,b,c], [a,c,b], [b,a,c], [b,c,a], [c,a,b], [c,b,a]]
+
+
+p first_anagram?("gizmo", "sally")    #=> false
+p first_anagram?("elvis", "lives")    #=> true
 
 
 
@@ -34,12 +72,19 @@ end
 # Write a method #second_anagram? that iterates over the first string. For each letter in the first string, find the index of that letter in the second string (hint: use Array#find_index) and delete at that index. The two strings are anagrams if an index is found for every letter and the second string is empty at the end of the iteration.
 
 def second_anagram?(str1, str2)
+  arr1 = str1.chars 
+  arr2 = str2.chars
+
+  arr1.each do |ch| 
+    arr2.delete(ch)
+  end
   
+  arr2.empty?
 end
 
 
-p second_anagram?("gizmo", "sally")    #=> false
-p second_anagram?("elvis", "lives")    #=> true
+# p second_anagram?("gizmo", "sally")    #=> false
+# p second_anagram?("elvis", "lives")    #=> true
 
 
 
@@ -54,8 +99,8 @@ def third_anagram?(str1, str2)
   str1.chars.sort == str2.chars.sort
 end
 
-p third_anagram?("gizmo", "sally")    #=> false
-p third_anagram?("elvis", "lives")    #=> true
+# p third_anagram?("gizmo", "sally")    #=> false
+# p third_anagram?("elvis", "lives")    #=> true
 
 # Time complexity: O(nlog(n))
 # Space complexity: O(n)
