@@ -23,26 +23,135 @@ def first_anagram?(str1, str2)
 end
 
 
-def permutations(arr) 
-  return [[]] if arr.empty?
+# def permutations(arr) 
+#   return [[]] if arr.empty?
 
-  last = arr.last
-  perms = permutations(arr[0..-2])
-  output = []
+#   last = arr.last
+#   perms = permutations(arr[0..-2])
+#   output = []
 
-  perms.each do |perm|
-    cur_perms = []
+#   perms.each do |perm|
+#     cur_perms = []
 
-    (0..perm.length).each do |i|
-      cur_perm = perm.dup
-      cur_perms << cur_perm.insert(i, last)
+#     (0..perm.length).each do |i|
+#       cur_perm = perm.dup
+#       cur_perms << cur_perm.insert(i, last)
+#     end  
+
+#     output += cur_perms
+#   end
+
+#   output
+# end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def permutations(arr)
+  return [[]] if arr.empty? 
+  
+  #last element arr
+  #putting before and after every index of a perm
+  #permuatations(arr[0..-2])
+  #last = arr[-1]
+  
+  last = arr[-1]
+  perms  = permutations(arr[0..-2])
+  result = [] 
+  perms.each do |sub_arr| #[a,b]
+    current_perms = []
+    (0..sub_arr.length).each do |i|
+      dup = sub_arr.dup 
+      current_perms << dup.insert(i,last) # dup = ['b','a']
     end  
+     result += current_perms
+  end 
 
-    output += cur_perms
-  end
-
-  output
+  result 
 end
+
+# [[a,b], [b,a]]
+# sub_arr = ['b','b','a']
+# last = 'b'
+# current_perm = [['b', 'a']]
+
+
+#p permutations([]) # => [] => [[]]
+#p permutations(['a']) # => [a] => [[a]]
+p permutations(['a', 'b']) # => [a,b] => [[a,b], [b,a]]
+p permutations([1,2,3,4,5,6,7,8,9,10]) # => [a,b] => [[a,b], [b,a]]
+
+# => [] => [[]]
+# => [a] => [[a]]
+# => [a,b] => [[a,b], [b,a]]
+# => [a,b,c] => [[a,b,c], [a,c,b], [b,a,c], [b,c,a], [c,a,b], [c,b,a]]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # p permutations([]) # => [] => [[]]
 # p permutations(['a']) # => [a] => [[a]]
@@ -55,8 +164,8 @@ end
 # => [a,b,c] => [[a,b,c], [a,c,b], [b,a,c], [b,c,a], [c,a,b], [c,b,a]]
 
 
-p first_anagram?("gizmo", "sally")    #=> false
-p first_anagram?("elvis", "lives")    #=> true
+# p first_anagram?("gizmo", "sally")    #=> false
+# p first_anagram?("elvis", "lives")    #=> true
 
 
 
