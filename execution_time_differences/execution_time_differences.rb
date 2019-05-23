@@ -128,7 +128,7 @@ def largest_contiguous_subsum_2(arr)
 end
 
 # [2,3,-6,7,-6,7]
-# [2,5,]
+# [2,5,0,7]
 
 # [-5,-1,-3]
 # [-5,-1,]
@@ -136,10 +136,10 @@ end
 list = [2, 3, -6, 7, -6, 7]
 list2 = [-9,-7,-5,-3,-16,0]
 list3 = [3, 9, 5, 7, 2, 1, 0]
+list4 = [-5, -1, -3]
+
 p largest_contiguous_subsum_2(list) # => 8 (from [7, -6, 7])
 p largest_contiguous_subsum_2(list2) # => 0
-p largest_contiguous_subsum_2(list3) # => 0
-
-list = [-5, -1, -3]
-p largest_contiguous_subsum_2(list) # => -1 (from [-1])
+p largest_contiguous_subsum_2(list3) # => 27
+p largest_contiguous_subsum_2(list4) # => -1 (from [-1])
 
