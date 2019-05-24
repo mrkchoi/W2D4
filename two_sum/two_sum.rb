@@ -95,9 +95,9 @@ end
 
 # p qs([8,5,4,6,7,3,9,2,0,1])
 
-arr = [5, 1, 7, 0]
-p okay_two_sum?(arr, 6) # => should be true
-p okay_two_sum?(arr, 10) # => should be false
+# arr = [5, 1, 7, 0]
+# p okay_two_sum?(arr, 6) # => should be true
+# p okay_two_sum?(arr, 10) # => should be false
 
 
 
@@ -111,6 +111,22 @@ p okay_two_sum?(arr, 10) # => should be false
 # Bonus (come back to this once you have completed windowed max range exercises)
 # See if you can extend your solution of two_sum? to solve four_sum?
 
+
+
+def amazzzzzzing_two_sum?(arr, target)
+  hash = Hash.new
+
+  arr.each do |el|
+    return true if hash[target - el]
+    hash[el] = true
+  end
+
+  false
+end
+
+
+
+
 arr = [0, 1, 5, 7]
-# p bad_two_sum?(arr, 6) # => should be true
-# p bad_two_sum?(arr, 10) # => should be false
+p amazzzzzzing_two_sum?(arr, 6) # => should be true
+p amazzzzzzing_two_sum?(arr, 10) # => should be false
